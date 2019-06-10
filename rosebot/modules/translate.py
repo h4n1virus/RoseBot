@@ -41,7 +41,7 @@ def translate_neurotolge(text, fromlang="auto", to_lang=None):
         return translation
 
 
-@BOT.on_message(Filters.command("Tõlgi", "!"))
+@BOT.on_message(Filters.command("translate", "!"))
 def translate_message(bot: BOT, message: Message):
     if message.reply_to_message is not None:
         tolang = message.text[-2:]

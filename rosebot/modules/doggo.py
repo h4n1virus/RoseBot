@@ -1,5 +1,6 @@
 import requests
 from random import randint
+import re
 
 from pyrogram import Filters, Message
 
@@ -24,22 +25,24 @@ def get_doggo():
 
 @BOT.on_message(Filters.regex("(?i)(post|get|send) (dog|doggo|woof|🐶|🐕) (gif|gifs)"))
 def send_dog(bot: BOT, message: Message):
-    link_to_image = get_dog("webm,png,jpg,jpeg")
-    BOT.send_animation(
-        chat_id=message.chat.id, animation=link_to_image, disable_notification=True
-    )
-    if message.from_user.is_self:
-        message.delete()
+    if re.match("(?i)(post|get|send) (dog|doggo|woof|🐶|🐕) (gif|gifs)", message.text):
+        link_to_image = get_dog("webm,png,jpg,jpeg")
+        BOT.send_animation(
+            chat_id=message.chat.id, animation=link_to_image, disable_notification=True
+        )
+        if message.from_user.is_self:
+            message.delete()
 
 
 @BOT.on_message(Filters.regex("(?i)(post|get|send) (dog|doggo|woof|🐶|🐕)"))
 def send_dog_gif(bot: BOT, message: Message):
-    if randint(0, 1) == 1:
-        link_to_image = get_dog("webm,mp4")
-    else:
-        link_to_image = get_doggo()
-    BOT.send_photo(
-        chat_id=message.chat.id, photo=link_to_image, disable_notification=True
-    )
-    if message.from_user.is_self:
-        message.delete()
+    if re.match("(?i)(post|get|send) (dog|doggo|woof|🐶|🐕)", message.text):
+        if randint(0, 1) == 1:
+            link_to_image = get_dog("webm,mp4")
+        else:
+            link_to_image = get_doggo()
+        BOT.send_photo(
+            chat_id=message.chat.id, photo=link_to_image, disable_notification=True
+        )
+        if message.from_user.is_self:
+            message.delete()

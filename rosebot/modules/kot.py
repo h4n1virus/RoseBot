@@ -1,4 +1,5 @@
 import requests
+import re
 
 from pyrogram import Filters, Message
 
@@ -22,25 +23,27 @@ def get_kot(mime_types):
     Filters.regex("(?i)(post|get|send) (kot|kots|cat|cats|🐱|🐈|😸|🐱) (gif|gifs)")
 )
 def post_kot_gif(bot: BOT, message: Message):
-    kot_gif = get_kot(mime_types="gif")
-    BOT.send_animation(
-        chat_id=message.chat.id,
-        animation=kot_gif,
-        reply_to_message_id=ReplyCheck(message),
-        disable_notification=True,
-    )
-    if message.from_user.is_self:
-        message.delete()
+    if re.match("(?i)(post|get|send) (kot|kots|cat|cats|🐱|🐈|😸|🐱) (gif|gifs)", message.text):
+        kot_gif = get_kot(mime_types="gif")
+        BOT.send_animation(
+            chat_id=message.chat.id,
+            animation=kot_gif,
+            reply_to_message_id=ReplyCheck(message),
+            disable_notification=True,
+        )
+        if message.from_user.is_self:
+            message.delete()
 
 
 @BOT.on_message(Filters.regex("(?i)(post|get|send) (kot|kots|cat|cats|🐱|🐈|😸|🐱)"))
 def post_kot(bot: BOT, message: Message):
-    kot_link = get_kot(mime_types="jpg,png")
-    BOT.send_photo(
-        chat_id=message.chat.id,
-        photo=kot_link,
-        reply_to_message_id=ReplyCheck(message),
-        disable_notification=True,
-    )
-    if message.from_user.is_self:
-        message.delete()
+    if re.match("(?i)(post|get|send) (kot|kots|cat|cats|🐱|🐈|😸|🐱)", message.text):
+        kot_link = get_kot(mime_types="jpg,png")
+        BOT.send_photo(
+            chat_id=message.chat.id,
+            photo=kot_link,
+            reply_to_message_id=ReplyCheck(message),
+            disable_notification=True,
+        )
+        if message.from_user.is_self:
+            message.delete()
