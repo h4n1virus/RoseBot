@@ -1,5 +1,6 @@
 from pyrogram import Message
 
+# Code stolen from: https://git.colinshark.de/PyroBot/PyroBot/src/branch/develop/pyrobot/modules/memes.py
 # -- Helpers -- #
 def ReplyCheck(message: Message):
     reply_id = None
