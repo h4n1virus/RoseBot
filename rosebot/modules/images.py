@@ -44,7 +44,7 @@ def drumpf_quote():
 def post_rose_gif(bot: BOT, message: Message):
     image = get_random_image(ROSE_GIF_DIR)
     BOT.send_animation(
-        chat_id=message.chat.id, animation=image, disable_notification=True
+        chat_id=message.chat.id, animation=image, disable_notification=True, reply_to_message_id=ReplyCheck(message)
     )
     if message.from_user.is_self:
         message.delete()
@@ -55,7 +55,7 @@ def post_rose_gif(bot: BOT, message: Message):
 )
 def post_rose(bot: BOT, message: Message):
     image = get_random_image(ROSE_DIR)
-    BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True)
+    BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True, reply_to_message_id=ReplyCheck(message))
     if message.from_user.is_self:
         message.delete()
 
