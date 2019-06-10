@@ -822,10 +822,6 @@ def pwiki(bot: BOT, message: Message):
         disable_notification=True,
         reply_to_message_id=ReplyCheck(message),
     )
-    BOT.send_message(
-        chat_id=message.chat.id,
-        text=text[1],
-        disable_notification=True
-    )
+    BOT.send_message(chat_id=message.chat.id, text=text[1], disable_notification=True)
     if message.from_user.is_self:
         message.delete()

@@ -24,10 +24,10 @@ def wiki(bot: BOT, message: Message):
     summary = wikipedia_summary(topic)
 
     BOT.send_message(
-    chat_id=message.chat.id,
-    text=summary,
-    disable_notification=True,
-    reply_to_message_id=ReplyCheck(message)
+        chat_id=message.chat.id,
+        text=summary,
+        disable_notification=True,
+        reply_to_message_id=ReplyCheck(message),
     )
 
     if message.from_user.is_self:

@@ -5,6 +5,7 @@ from pyrogram import Filters, Message
 from rosebot import BOT, THECATAPI
 from rosebot.helpers import ReplyCheck
 
+
 def get_kot(mime_types):
     headers = {"x-api-key": THECATAPI}
     r = requests.get(
@@ -17,7 +18,9 @@ def get_kot(mime_types):
         return url
 
 
-@BOT.on_message(Filters.regex("(?i)(post|get|send) (kot|kots|cat|cats|🐱|🐈|😸|🐱) (gif|gifs)"))
+@BOT.on_message(
+    Filters.regex("(?i)(post|get|send) (kot|kots|cat|cats|🐱|🐈|😸|🐱) (gif|gifs)")
+)
 def post_kot_gif(bot: BOT, message: Message):
     kot_gif = get_kot(mime_types="gif")
     BOT.send_animation(

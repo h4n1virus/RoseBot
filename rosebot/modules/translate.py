@@ -8,6 +8,7 @@ from rosebot import BOT, DETECTLANGUAGEAPI
 
 detectlanguage.configuration.api_key = DETECTLANGUAGEAPI
 
+
 def translate_neurotolge(text, fromlang="auto", to_lang=None):
     if "et" in to_lang:
         to_lang = "et"
@@ -28,7 +29,6 @@ def translate_neurotolge(text, fromlang="auto", to_lang=None):
         elif "en" in langapi["language"]:
             to_lang = "et"
 
- 
     r = requests.get(
         "https://neurotolge.ee/translate?from={}&to={}&q={}".format(
             fromlang, to_lang, text

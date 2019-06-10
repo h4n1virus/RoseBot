@@ -6,7 +6,24 @@ from rosebot import BOT
 from pyrogram import Filters, Message
 
 
-categories = ["explicit", "dev", "movie", "food", "celebrity", "science", "sport", "political", "religion", "animal", "history", "music", "travel", "career", "money", "fashion"]
+categories = [
+    "explicit",
+    "dev",
+    "movie",
+    "food",
+    "celebrity",
+    "science",
+    "sport",
+    "political",
+    "religion",
+    "animal",
+    "history",
+    "music",
+    "travel",
+    "career",
+    "money",
+    "fashion",
+]
 
 
 def match_word(string_list, string):

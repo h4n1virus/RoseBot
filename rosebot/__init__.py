@@ -8,8 +8,8 @@ from pyrogram import Client
 
 
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO)
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
 logging.getLogger("pyrogram").setLevel(logging.WARN)
 LOGS = logging.getLogger(__name__)
 
@@ -48,8 +48,4 @@ GENTOO_DIR = os.getenv("GENTOO_DIR")
 NINE_ELEVEN_DIR = os.getenv("NINE_ELEVEN_DIR")
 
 
-BOT = Client(
-    session_name="RoseBot",
-    api_id=API_ID,
-    api_hash=API_HASH,
-)
+BOT = Client(session_name="RoseBot", api_id=API_ID, api_hash=API_HASH)

@@ -33,11 +33,7 @@ def post_oadb(bot: BOT, message: Message):
         disable_notification=True,
         reply_to_message_id=ReplyCheck(message),
     )
-    
-    BOT.send_photo(
-        chat_id=message.chat.id,
-        photo=data[1],
-        disable_notification=True,
-    )
+
+    BOT.send_photo(chat_id=message.chat.id, photo=data[1], disable_notification=True)
     if message.from_user.is_self:
         message.delete()

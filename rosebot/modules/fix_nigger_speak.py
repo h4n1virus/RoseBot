@@ -13,7 +13,5 @@ def fix_ngr_spk(bot: BOT, message: Message):
         message_text = message.text.replace("wdym", "what do you mean")
 
     BOT.edit_message_text(
-        chat_id=message.chat.id,
-        message_id=message.message_id,
-        text=message_text
+        chat_id=message.chat.id, message_id=message.message_id, text=message_text
     )

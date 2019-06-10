@@ -6,6 +6,7 @@ from pyrogram import Filters, Message
 from rosebot import BOT
 from rosebot.helpers import ReplyCheck
 
+
 def random_xkcd():
     r = requests.get("http://xkcd.com/{}/info.0.json".format(random.randint(1, 2156)))
     if r.status_code == 200:
@@ -22,6 +23,6 @@ def post_xkcd(bot: BOT, message: Message):
         reply_to_message_id=ReplyCheck(message),
         disable_notification=True,
     )
-    
+
     if message.from_user.is_self:
         message.delete()

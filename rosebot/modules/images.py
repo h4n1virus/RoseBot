@@ -17,7 +17,7 @@ from rosebot import (
     MERCHANT_DIR,
     REDPILL_DIR,
     NINE_ELEVEN_DIR,
-    GENTOO_DIR
+    GENTOO_DIR,
 )
 
 
@@ -36,26 +36,26 @@ def drumpf_quote():
         return text
 
 
-@BOT.on_message(Filters.regex("(?i)(post|get|send) (rose|indigo girl|blue girl|love|roze|crush|🌹) gif"))
+@BOT.on_message(
+    Filters.regex(
+        "(?i)(post|get|send) (rose|indigo girl|blue girl|love|roze|crush|🌹) gif"
+    )
+)
 def post_rose_gif(bot: BOT, message: Message):
     image = get_random_image(ROSE_GIF_DIR)
     BOT.send_animation(
-        chat_id=message.chat.id,
-        animation=image,
-        disable_notification=True,
+        chat_id=message.chat.id, animation=image, disable_notification=True
     )
     if message.from_user.is_self:
         message.delete()
 
 
-@BOT.on_message(Filters.regex("(?i)(post|get|send) (rose|indigo girl|blue girl|love|roze|crush|🌹)"))
+@BOT.on_message(
+    Filters.regex("(?i)(post|get|send) (rose|indigo girl|blue girl|love|roze|crush|🌹)")
+)
 def post_rose(bot: BOT, message: Message):
     image = get_random_image(ROSE_DIR)
-    BOT.send_photo(
-        chat_id=message.chat.id,
-        photo=image,
-        disable_notification=True,
-    )
+    BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True)
     if message.from_user.is_self:
         message.delete()
 
@@ -63,11 +63,7 @@ def post_rose(bot: BOT, message: Message):
 @BOT.on_message(Filters.regex("(?i)(brexit|farage|nigel)"))
 def post_brexit(bot: BOT, message: Message):
     image = get_random_image(FARAGE_DIR)
-    BOT.send_photo(
-        chat_id=message.chat.id,
-        photo=image,
-        disable_notification=True,
-    )
+    BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True)
 
 
 @BOT.on_message(Filters.regex("(?i)(post|get|send) (drumpf|trump|orange man)"))
@@ -86,33 +82,27 @@ def post_trump(bot: BOT, message: Message):
 @BOT.on_message(Filters.regex("(?i)(post|get|send) (tay|taytay|taylor|tswift|swift)"))
 def post_swift(bot: BOT, message: Message):
     image = get_random_image(SWIFT_DIR)
-    BOT.send_photo(
-        chat_id=message.chat.id,
-        photo=image,
-        disable_notification=True,
+    BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True)
+
+
+@BOT.on_message(
+    Filters.regex(
+        "(?i)(post|get|send) (whore|slut|watson|emma|hermione|granger|harry potter girl)"
     )
-
-
-@BOT.on_message(Filters.regex("(?i)(post|get|send) (whore|slut|watson|emma|hermione|granger|harry potter girl)"))
+)
 def post_watson(bot: BOT, message: Message):
     image = get_random_image(WATSON_DIR)
-    BOT.send_photo(
-        chat_id=message.chat.id,
-        photo=image,
-        disable_notification=True,
-    )
+    BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True)
     if message.from_user.is_self:
         message.delete()
 
 
-@BOT.on_message(Filters.regex("(?i)(post|get|send) (sminem|smnem|smn|big ear (kid|guy)|chromosome)"))
+@BOT.on_message(
+    Filters.regex("(?i)(post|get|send) (sminem|smnem|smn|big ear (kid|guy)|chromosome)")
+)
 def post_sminem(bot: BOT, message: Message):
     image = get_random_image(SMINEM_DIR)
-    BOT.send_photo(
-        chat_id=message.chat.id,
-        photo=image,
-        disable_notification=True,
-    )
+    BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True)
     if message.from_user.is_self:
         message.delete()
 
@@ -162,34 +152,26 @@ def post_redpill(bot: BOT, message: Message):
     image = get_random_image(REDPILL_DIR)
     if ".gif" in os.path.splitext(image):
         BOT.send_animation(
-            chat_id=message.chat.id,
-            animation=image,
-            disable_notification=True,
+            chat_id=message.chat.id, animation=image, disable_notification=True
         )
     else:
-        BOT.send_photo(
-            chat_id=message.chat.id,
-            photo=image,
-            disable_notification=True,
-        )
+        BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True)
     if message.from_user.is_self:
         message.delete()
 
 
-@BOT.on_message(Filters.regex("(?i)((post|get|send) (911|bush|twin towers|wtc)|bush did (911|9/11))"))
+@BOT.on_message(
+    Filters.regex(
+        "(?i)((post|get|send) (911|bush|twin towers|wtc)|bush did (911|9/11))"
+    )
+)
 def post_911(bot: BOT, message: Message):
     image = get_random_image(NINE_ELEVEN_DIR)
     if ".gif" in os.path.splitext(image):
         BOT.send_animation(
-            chat_id=message.chat.id,
-            animation=image,
-            disable_notification=True,
+            chat_id=message.chat.id, animation=image, disable_notification=True
         )
     else:
-        BOT.send_photo(
-            chat_id=message.chat.id,
-            photo=image,
-            disable_notification=True,
-        )
+        BOT.send_photo(chat_id=message.chat.id, photo=image, disable_notification=True)
     if message.from_user.is_self:
         message.delete()

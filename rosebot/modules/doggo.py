@@ -26,9 +26,7 @@ def get_doggo():
 def send_dog(bot: BOT, message: Message):
     link_to_image = get_dog("webm,png,jpg,jpeg")
     BOT.send_animation(
-        chat_id=message.chat.id,
-        animation=link_to_image,
-        disable_notification=True,
+        chat_id=message.chat.id, animation=link_to_image, disable_notification=True
     )
     if message.from_user.is_self:
         message.delete()
@@ -41,9 +39,7 @@ def send_dog_gif(bot: BOT, message: Message):
     else:
         link_to_image = get_doggo()
     BOT.send_photo(
-        chat_id=message.chat.id,
-        photo=link_to_image,
-        disable_notification=True,
+        chat_id=message.chat.id, photo=link_to_image, disable_notification=True
     )
     if message.from_user.is_self:
         message.delete()

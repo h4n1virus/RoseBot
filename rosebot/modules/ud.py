@@ -5,6 +5,7 @@ from pyrogram import Filters, Message
 from rosebot import BOT
 from rosebot.helpers import ReplyCheck
 
+
 def define_word_ud(word):
     def get_data(word):
         r = requests.get(
@@ -18,7 +19,9 @@ def define_word_ud(word):
         definitions = []
         for definition in data["list"]:
             definitions.append(
-                "{}\t{}\t{}".format(definition["word"], definition["definition"], definition["example"])
+                "{}\t{}\t{}".format(
+                    definition["word"], definition["definition"], definition["example"]
+                )
             )
         return definitions
 
@@ -33,7 +36,6 @@ def define_word_ud(word):
                 five_definitions, word, definition_, example
             )
         return five_definitions
-
 
     data = get_data(word)
     if not data:
@@ -56,9 +58,7 @@ def post_ud(bot: BOT, message: Message):
     )
     if text[4096:]:
         BOT.send_message(
-            chat_id=message.chat.id,
-            text=text[4096:],
-            disable_notification=True
+            chat_id=message.chat.id, text=text[4096:], disable_notification=True
         )
     if message.from_user.is_self:
         message.delete()
