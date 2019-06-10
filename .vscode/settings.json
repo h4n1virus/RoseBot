@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "/home/viru/Documents/RoseBot/env/bin/python3",
-    "python.linting.pylintEnabled": true,
-    "python.linting.flake8Enabled": false,
-    "python.linting.enabled": true
-}
