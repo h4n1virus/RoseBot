@@ -10,14 +10,14 @@ arabian = (
 
 @BOT.on_message(Filters.new_chat_members & Filters.chat(nfc))
 def restrict_arabian(bot: BOT, message: Message):
-    for new_member in message.new_chat_members:
-        if re.match(arabian, new_member.first_name):
-            BOT.restrict_chat_member(
-            chat_id = message.chat.id,
-            user_id = new_member.id
-        )
-
-@BOT.on_message(Filters.chat(nfc) & Filters.regex(arabian))
-def delete_arabian(bot: BOT, message: Message):
-    message.delete()
-    LOGS.info("Persian detected, message deleted")
+    new = message.new_chat_members
+    for user in new:
+        if re.search(arabian, user):
+            BOT.kick_chat_member(
+                chat_id=message.chat.id,
+                user_id=message.reply_to_message.from_user.id,
+                until_date=0)
+            BOT.unban_chat_member(
+                chat_id=message.chat.id,
+                user_id=message.reply_to_message.from_user.id)
+            BOT.send_message(message.chat.id, "arabian characters detected in name, user kicked from the chat")
