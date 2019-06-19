@@ -34,18 +34,8 @@ VIRUSTOTALAPIKEY = os.getenv("VIRUSTOTALAPIKEY")
 OMDBAPIKEY = os.getenv("OMDBAPIKEY")
 
 
-# Directories
-ROSE_DIR = os.getenv("ROSE_DIR")
-ROSE_GIF_DIR = os.getenv("ROSE_GIF_DIR")
-FARAGE_DIR = os.getenv("FARAGE_DIR")
-TRUMP_DIR = os.getenv("TRUMP_DIR")
-WATSON_DIR = os.getenv("WATSON_DIR")
-SWIFT_DIR = os.getenv("SWIFT_DIR")
-SMINEM_DIR = os.getenv("SMINEM_DIR")
-MERCHANT_DIR = os.getenv("MERCHANT_DIR")
-REDPILL_DIR = os.getenv("REDPILL_DIR")
-GENTOO_DIR = os.getenv("GENTOO_DIR")
-NINE_ELEVEN_DIR = os.getenv("NINE_ELEVEN_DIR")
+# FILEIDS
+FILEIDS_DIR = os.getenv("FILEIDS_DIR")
 
 
 BOT = Client(session_name="RoseBot", api_id=API_ID, api_hash=API_HASH)
