@@ -11,7 +11,11 @@ osrs = MediaWiki(url='https://oldschool.runescape.wiki/api.php')
 def osrswiki(search_string):
     search = osrs.search(search_string)
     page = osrs.page(search[0])
-    text = '**{}**\n\n{}\n**Read more at:** [{}]({})'.format(page.title, page.summary, page.title, page.url)
+    sections = ''
+    for section in page.sections:
+        sections = '{}\n{}\n{}'.format(sections, section, page.section(section))
+    
+    text = '**{}**\n\n{}\n{}\n**Read more at:** [{}]({})'.format(page.title, page.summary, sections, page.title, page.url)
     return text
 
 
